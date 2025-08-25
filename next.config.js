@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
+    unoptimized: true, // disable Image Optimization to avoid sharp dependency in production build
   },
 }
 

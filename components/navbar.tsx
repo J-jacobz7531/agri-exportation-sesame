@@ -1,15 +1,22 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 
 export function Navbar() {
   const [active, setActive] = useState<string | null>(null);
+  const router = useRouter();
+
+  const handleHomeClick = () => {
+    router.push('/');
+  };
   
   return (
     <div className="relative w-full flex items-center justify-center">
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Home">
           <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/" onClick={handleHomeClick}>Home Page</HoveredLink>
             <HoveredLink href="#hero">Hero Section</HoveredLink>
             <HoveredLink href="#about">About Us</HoveredLink>
             <HoveredLink href="#contact">Contact</HoveredLink>
@@ -18,28 +25,34 @@ export function Navbar() {
         <MenuItem setActive={setActive} active={active} item="Products">
           <div className="text-sm grid grid-cols-2 gap-10 p-4">
             <ProductItem
-              title="Premium Rice"
-              href="#products"
-              src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=140&auto=format&fit=crop"
-              description="High-quality rice varieties for global markets"
+              title="Sesame Seeds"
+              href="/products/sesame-seeds"
+              src="/images/sesameSeeds1.webp"
+              description="Premium quality seeds with high oil content"
             />
             <ProductItem
-              title="Fresh Produce"
-              href="#products"
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=140&auto=format&fit=crop"
-              description="Farm-fresh fruits and vegetables"
+              title="Coffee"
+              href="/products/coffee"
+              src="/images/Coffee.jpeg"
+              description="Hand-picked Arabica and Robusta beans"
             />
             <ProductItem
-              title="Organic Spices"
-              href="#products"
-              src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=140&auto=format&fit=crop"
-              description="Premium spices and herbs"
+              title="Cocoa"
+              href="/products/cocoa"
+              src="/images/cocoaSeeds1.jpg"
+              description="Sustainably sourced cocoa beans"
             />
             <ProductItem
-              title="Quality Grains"
-              href="#products"
-              src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=140&auto=format&fit=crop"
-              description="Nutritious grains and pulses"
+              title="Vanilla"
+              href="/products/vanilla"
+              src="/images/export.jpeg"
+              description="Bourbon-grade vanilla beans"
+            />
+            <ProductItem
+              title="Maize"
+              href="/products/maize"
+              src="/images/plantation.jpeg"
+              description="High-quality yellow and white maize"
             />
           </div>
         </MenuItem>
